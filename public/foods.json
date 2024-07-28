@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "name": "Margherita Pizza",
+        "photo": "https://i.ibb.co/9n3dQ0F/Margherita-Pizza.jpg",
+        "category": "Pizza",
+        "details": "Classic margherita pizza with fresh tomatoes, mozzarella, and basil.",
+        "price": 12.99
+    },
+    {
+        "id": 2,
+        "name": "Pepperoni Pizza",
+        "photo": "https://i.ibb.co/gP5SjJT/Pepperoni-Pizza.jpg",
+        "category": "Pizza",
+        "details": "Spicy pepperoni with mozzarella cheese and tomato sauce.",
+        "price": 14.99
+    },
+    {
+        "id": 3,
+        "name": "BBQ Chicken Pizza",
+        "photo": "https://i.ibb.co/CVpVsQy/BBQ-Chicken-Pizza.jpg",
+        "category": "Pizza",
+        "details": "BBQ sauce, grilled chicken, red onions, and cilantro.",
+        "price": 15.99
+    },
+    {
+        "id": 4,
+        "name": "Caesar Salad",
+        "photo": "https://i.ibb.co/V9Tj5by/Caesar-Salad.jpg",
+        "category": "Salad",
+        "details": "Crisp romaine lettuce, croutons, parmesan cheese, and Caesar dressing.",
+        "price": 9.99
+    },
+    {
+        "id": 5,
+        "name": "Greek Salad",
+        "photo": "https://i.ibb.co/Qb05269/Garden-Salad.jpg",
+        "category": "Salad",
+        "details": "Tomatoes, cucumbers, red onions, olives, feta cheese, and Greek dressing.",
+        "price": 10.99
+    },
+    {
+        "id": 6,
+        "name": "Garden Salad",
+        "photo": "https://i.ibb.co/Qb05269/Garden-Salad.jpg",
+        "category": "Salad",
+        "details": "Mixed greens, cherry tomatoes, cucumbers, and your choice of dressing.",
+        "price": 8.99
+    },
+    {
+        "id": 7,
+        "name": "Spaghetti Bolognese",
+        "photo": "https://i.ibb.co/y0bML96/Fettuccine-Alfredo.jpg",
+        "category": "Pasta",
+        "details": "Spaghetti pasta with a rich meat sauce made with ground beef and tomatoes.",
+        "price": 13.99
+    },
+    {
+        "id": 8,
+        "name": "Fettuccine Alfredo",
+        "photo": "https://i.ibb.co/y0bML96/Fettuccine-Alfredo.jpg",
+        "category": "Pasta",
+        "details": "Fettuccine pasta with a creamy Alfredo sauce and parmesan cheese.",
+        "price": 14.99
+    },
+    {
+        "id": 9,
+        "name": "Penne Arrabbiata",
+        "photo": "https://i.ibb.co/dk8cMx6/Penne-Arrabbiata.jpg",
+        "category": "Pasta",
+        "details": "Penne pasta in a spicy tomato sauce with garlic and chili peppers.",
+        "price": 12.99
+    },
+    {
+        "id": 10,
+        "name": "Chicken Tikka Masala",
+        "photo": "https://i.ibb.co/NTG2WX1/Chicken-Tikka-Masala.jpg",
+        "category": "Indian",
+        "details": "Grilled chicken pieces in a creamy tomato sauce with spices.",
+        "price": 15.99
+    },
+    {
+        "id": 11,
+        "name": "Butter Chicken",
+        "photo": "https://i.ibb.co/DkTqP3t/Butter-Chicken.jpg",
+        "category": "Indian",
+        "details": "Chicken cooked in a rich and creamy tomato-based sauce.",
+        "price": 15.99
+    },
+    {
+        "id": 12,
+        "name": "Paneer Butter Masala",
+        "photo": "https://i.ibb.co/d4RW5xD/Paneer-Butter-Masala.jpg",
+        "category": "Indian",
+        "details": "Cottage cheese cubes in a buttery tomato gravy.",
+        "price": 13.99
+    },
+    {
+        "id": 13,
+        "name": "Sushi Platter",
+        "photo": "https://i.ibb.co/K5JPP6D/Sushi-Platter.jpg",
+        "category": "Japanese",
+        "details": "Assorted sushi including nigiri, sashimi, and rolls.",
+        "price": 22.99
+    },
+    {
+        "id": 14,
+        "name": "Ramen",
+        "photo": "https://i.ibb.co/nMz9x9h/Ramen.jpg",
+        "category": "Japanese",
+        "details": "Noodles in a savory broth with pork, egg, and vegetables.",
+        "price": 14.99
+    },
+    {
+        "id": 15,
+        "name": "Tempura",
+        "photo": "https://i.ibb.co/j6z17Fj/Tempura.jpg",
+        "category": "Japanese",
+        "details": "Lightly battered and fried seafood and vegetables.",
+        "price": 13.99
+    },
+    {
+        "id": 16,
+        "name": "Beef Tacos",
+        "photo": "https://i.ibb.co/DbNpN6M/Beef-Tacos.jpg",
+        "category": "Mexican",
+        "details": "Soft corn tortillas filled with seasoned beef, lettuce, and cheese.",
+        "price": 11.99
+    },
+    {
+        "id": 17,
+        "name": "Chicken Burrito",
+        "photo": "https://i.ibb.co/61wYMYn/Chicken-Burrito.jpg",
+        "category": "Mexican",
+        "details": "Flour tortilla filled with grilled chicken, rice, beans, and salsa.",
+        "price": 12.99
+    },
+    {
+        "id": 18,
+        "name": "Vegetarian Quesadilla",
+        "photo": "https://i.ibb.co/bBMnWwW/Vegetarian-Quesadilla.jpg",
+        "category": "Mexican",
+        "details": "Flour tortilla with melted cheese, peppers, onions, and mushrooms.",
+        "price": 10.99
+    },
+    {
+        "id": 19,
+        "name": "Cheeseburger",
+        "photo": "https://i.ibb.co/S50xBwb/Cheeseburger.jpg",
+        "category": "American",
+        "details": "Beef patty with cheese, lettuce, tomato, and pickles on a bun.",
+        "price": 11.99
+    },
+    {
+        "id": 20,
+        "name": "BBQ Ribs",
+        "photo": "https://i.ibb.co/hRgg4C8/BBQ-Ribs.jpg",
+        "category": "American",
+        "details": "Slow-cooked ribs with BBQ sauce, served with coleslaw.",
+        "price": 19.99
+    }
+]
