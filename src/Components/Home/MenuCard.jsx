@@ -8,6 +8,7 @@ const MenuCard = () => {
 
   const handleOrder = (index) => {
     const data = inputRefs.current[index]?.value;
+    const data1 = inputRefs.current.value
     console.log(data);
 
     const orderList = { name: foods[index].name, price: foods[index].price, quantity: data };
@@ -17,6 +18,17 @@ const MenuCard = () => {
   return (
     <section className="my-10">
       <h1 className="text-3xl font-bold text-center">Menu Card</h1>
+      <div>
+      <input
+                  ref={inputRefs }
+                  type="number"
+                  name="count"
+                  className="border-2 px-1 border-black w-10 rounded-lg"
+                />
+                <button className="btn" onClick={() => handleOrder()}>
+                  Order
+                </button>
+      </div>
       <div className="flex my-10">
         <div className="flex w-2/3 flex-wrap gap-10 justify-center">
           {foods.map((e, idx) => (
