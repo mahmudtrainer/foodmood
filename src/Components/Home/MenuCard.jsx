@@ -4,9 +4,12 @@ import { useLoaderData } from "react-router-dom";
 const MenuCard = () => {
   const foods = useLoaderData(null);
   const [orderArray, setOrderArray] = useState([]);
+  const [array, setArray] = useState(foods);
   // const [pageNum, setpageNum] = useState([])
   let totalPrice = 0
   const inputRefs = useRef([]);
+  const searchRef = useRef()
+  // console.log(foods);
 
   const handleOrder = (index) => {
     const data = inputRefs.current[index]?.value;
@@ -41,6 +44,42 @@ const MenuCard = () => {
   // setpageNum(pageCount)
   const pageLength = [...Array(pageCount).keys()]
 
+
+  const handleSort =(e)=>{
+    console.log(e.target.value);
+  
+    if(e.target.value == "lowtohigh"){
+  const sortArray = foods.sort((a,b)=> a.price - b.price)
+  setArray([...sortArray])
+    // console.log(sortArray);
+
+    }
+    if(e.target.value == "hightolow"){
+      const sortArray = foods.sort((a,b)=>b.price - a.price )
+      // console.log(sortArray);
+      setArray([...sortArray])
+    }
+    if(e.target.value == "Default"){
+      // console.log(foods);
+      setArray([...foods])
+    }
+
+    
+  }
+
+ const handleSearch =(e)=>{
+  e.preventDefault()
+  console.log(searchRef.current.value);
+  const search = foods.filter((e,idx)=> e.name.toLowerCase().includes(searchRef.current.value.toLowerCase()) )
+  console.log(search);
+  setArray([...search])
+  if(searchRef.current.value.length <1){
+    setArray([...foods])
+  }
+
+ }
+  console.log(array);
+
   return (
     <section className="my-10">
       <h1 className="text-3xl font-bold text-center">Menu Card</h1>
@@ -56,9 +95,25 @@ const MenuCard = () => {
         </button>
       </div> */}
       <div className="flex my-10">
-        <div >
-         <div className="flex w-2/3 flex-wrap gap-10 justify-center">
-         {foods.map((e, idx) => (
+        <div  className="w-2/3">
+        <div className="flex justify-center my-5">
+        <div id="Input Section" className="w-fit mx-auto">
+        <input ref={searchRef} type="text" className="border-2 rounded-xl border-black p-1 " />
+        <button onClick={handleSearch} className="btn btn-sm bg-red-500 text-white hover:bg-red-500">Search </button>
+        </div>
+          <div id="dropdown" className="w-fit ml-auto">
+          <select onClick={handleSort} name="" id="" className="border-2 p-1 border-black">
+            <option value="Default">Default</option>
+            <option  value="lowtohigh">Low To High</option>
+            <option value="hightolow"> High to Low</option>
+          </select>
+          {/* <butto onClick={handleSort} className="btn bg-red-500 text-white hover:bg-red-500 mr-10">Sort(low to High)</butto>
+          <butto onClick={handleSort1} className="btn bg-red-500 text-white hover:bg-red-500 mr-10">Sort(High to Low)</butto> */}
+        </div>
+        </div>
+        
+         <div className="flex  flex-wrap gap-10 justify-center">
+         {array?.map((e, idx) => (
             <div key={idx} className="border-2 rounded-xl p-2 w-fit">
               <img className="w-56 h-52 object-cover" src={e?.photo} alt="" />
               <h1>{e?.name}</h1>
