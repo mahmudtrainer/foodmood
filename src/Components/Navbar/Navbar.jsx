@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className='flex justify-around p-3'>
+        <div className='flex flex-wrap gap-3 justify-around p-3'>
             <div>
                 <img src={logo} className='w-20 h-16 object-cover' alt="" />
             </div>
@@ -32,7 +32,7 @@ const Navbar = () => {
                     </NavLink>
                 </ul>
             </div>
-            <div className='my-auto'><button className='btn bg-red-500 text-white'>Log In</button></div>
+            <div className='my-auto w-fit lg:mx-0 md:mx-0 ml-auto '><button className='btn bg-red-500 text-white'>Log In</button></div>
         </div>
     );
 };

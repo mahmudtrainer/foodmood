@@ -3,17 +3,17 @@ import bgimg from "../../../public/bgimg.png"
 
 const Footer = () => {
     return (
-      <div className='bg-black relative  h-[600px] mt-20'>
-          <div className=' absolute opacity-40'>
-            <img src={bgimg} alt="" />
+      <div className='bg-black relative  lg:h-[600px] h-full mt-20'>
+          <div className=' absolute h-full opacity-40'>
+            <img src={bgimg} className='h-full' alt="" />
         </div>
-        <div className='flex justify-around'>
-                <div className=' relative text-white mt-16'>
-                    <h1 className='text-4xl font-semibold'>Contact Us</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi suscipit inventore, dolor temporibus </p>
-                    <p><b>Email:</b>mahmudhasan@gmail.com</p>
+        <div className='flex flex-wrap justify-around'>
+                <div className=' relative w-full md:w-1/2 text-white mt-16'>
+                    <h1 className='text-4xl md:text-2xl font-semibold'>Contact Us</h1>
+                    <p className='text-base'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi suscipit inventore, dolor temporibus </p>
+                    <p className='text-base'><b>Email:</b>mahmudhasan@gmail.com</p>
                 </div>
-                <div className='bg-white border-2 rounded-2xl border-black space-y-3 py-10 -mt-10 relative w-1/3'>
+                <div className='bg-white border-2 rounded-2xl border-black space-y-3 py-10 lg:-mt-10 md:-mt-10 relative lg:w-1/3 md:w-1/2 w-full my-3'>
 <h1 className='text-3xl text-center'>Have a Question??</h1>
 <div className=' w-72 mx-auto'>
     <label htmlFor="" className='text-lg font-semibold'>Email<span className='text-red-500'>*</span></label> <br />
@@ -27,7 +27,7 @@ const Footer = () => {
                 </div>
             </div>
         <div className='relative'>
-        <footer className="footer bg-base-200 w-2/3 mx-auto mt-5 text-base-content p-10">
+        <footer className="footer bg-base-200 lg:w-2/3 md:w-2/3 w-full mx-auto mt-5 text-base-content p-10">
   <aside>
     <svg
       width="50"

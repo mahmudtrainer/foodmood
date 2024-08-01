@@ -7,7 +7,7 @@ import logo from '../../../public/logo.png'
 
 const Service = () => {
     return (
-        <div className='text-center flex gap-10 justify-center'>
+        <div className='text-center flex flex-wrap gap-10 justify-center'>
             <div className='bg-gray-200 rounded-2xl p-2'>
                 <h1>Best Quality</h1>
                 <Lottie animationData={quality} className='w-44'></Lottie>

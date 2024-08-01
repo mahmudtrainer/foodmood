@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const MenuCard = () => {
@@ -10,6 +10,8 @@ const MenuCard = () => {
   const inputRefs = useRef([]);
   const searchRef = useRef()
   // console.log(foods);
+
+
 
   const handleOrder = (index) => {
     const data = inputRefs.current[index]?.value;
@@ -94,8 +96,8 @@ const MenuCard = () => {
           Order
         </button>
       </div> */}
-      <div className="flex my-10">
-        <div  className="w-2/3">
+      <div className="flex flex-wrap my-10">
+        <div  className="lg:w-2/3 w-full">
         <div className="flex justify-center my-5">
         <div id="Input Section" className="w-fit mx-auto">
         <input ref={searchRef} type="text" className="border-2 rounded-xl border-black p-1 " />
@@ -138,7 +140,7 @@ const MenuCard = () => {
             }
           </div>
         </div>
-        <div className="w-1/4">
+        <div className="lg:w-1/4 w-fit mx-auto">
           <h1 className="text-2xl text-center font-semibold underline text-red-500">
             See Your Order List
           </h1>
