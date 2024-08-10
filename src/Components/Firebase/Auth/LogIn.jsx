@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { app } from '../firebase.config';
+import { ContextSource } from '../../ContextAPI/ContextAPI';
+import { FcGoogle } from "react-icons/fc";
+// import { app } from '../firebase.config';
 
 
 const LogIn = () => {
     const auth = getAuth(app)
     const navigate = useNavigate()
-    const [user, setUser] = useState(null)
+    const {logIn, googleUser} = useContext(ContextSource)
+    
     const handleLogin = (e) => {
         e.preventDefault()
         const data = e.target
@@ -16,46 +20,53 @@ const LogIn = () => {
         console.log(email, password);
 
         if (email && password) {
-            signInWithEmailAndPassword(auth, email, password)
-                .then(res => {
-                    console.log(res);
-
-                })
-                .catch(err => {
-                    console.log(err);
-
-                })
+            logIn(email,password)
+            .then(res=>{
+                console.log(res);
+                navigate("/")
+                
+            })
+            .catch(err=>{
+                console.log(err);
+                
+            })
         }
 
 
 
+        // if (email && password) {
+        //     signInWithEmailAndPassword(auth, email, password)
+        //         .then(res => {
+        //             console.log(res);
+
+        //         })
+        //         .catch(err => {
+        //             console.log(err);
+
+        //         })
+        // }
+
+
+
     }
 
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (customer) => {
-            if (customer) {
-                console.log(customer);
-                setUser(customer)
-
-            }
-        })
-    }, [auth]);
 
 
-    const handleLogOut = ()=>{
-if(user){
-    signOut(auth)
-    .then(res=>{
-        console.log('Log Out Successfully');
+
+//     const handleLogOut = ()=>{
+// if(user){
+//     signOut(auth)
+//     .then(res=>{
+//         console.log('Log Out Successfully');
         
-    })
-    .catch(err=>{
-        console.log(err);
+//     })
+//     .catch(err=>{
+//         console.log(err);
         
-    })
-}
-    }
+//     })
+// }
+//     }
 
     return (
         <section>
@@ -77,15 +88,18 @@ if(user){
                         <button className='btn bg-red-500 mx-auto text-white w-1/2'>LogIn</button>
                     </div>
                 </form>
+                <div>
+                    <button onClick={()=>googleUser()} className='w-full rounded-xl btn text-xl font-semibold bg-transparent '>Log In With Google <FcGoogle></FcGoogle> </button>
+                </div>
 
-                <div className='mx-auto w-fit'>
+                {/* <div className='mx-auto w-fit'>
                     {
                         user? 
                         <button onClick={handleLogOut} className='btn text-white w-32 bg-red-500 '>LogOut</button>
                         :
                         ""
                     }
-                </div>
+                </div> */}
             </div>
         </section>
     );

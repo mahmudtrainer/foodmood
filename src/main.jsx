@@ -5,6 +5,9 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Components/Home/Home.jsx'
 import MenuCard from './Components/Home/MenuCard.jsx'
+import Registration from './Components/Firebase/Auth/Registration.jsx'
+import LogIn from './Components/Firebase/Auth/LogIn.jsx'
+import ContextAPI from './Components/ContextAPI/ContextAPI.jsx'
 
 
 const routes = createBrowserRouter([
@@ -35,8 +38,10 @@ const routes = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <ContextAPI>
     <RouterProvider router={routes}>
     <App />
     </RouterProvider>
+    </ContextAPI>
   </React.StrictMode>,
 )
