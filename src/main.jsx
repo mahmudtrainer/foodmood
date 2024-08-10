@@ -20,6 +20,14 @@ const routes = createBrowserRouter([
         path : '/menu',
         element : <MenuCard></MenuCard>,
         loader : ()=>{ return fetch('../public/foods.json')}
+      },
+      {
+        path : "/registration",
+        element : <Registration></Registration>
+      },
+      {
+        path : '/login',
+        element : <LogIn></LogIn>
       }
     ]
   }
