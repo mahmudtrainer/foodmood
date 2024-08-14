@@ -9,6 +9,7 @@ import Registration from './Components/Firebase/Auth/Registration.jsx'
 import LogIn from './Components/Firebase/Auth/LogIn.jsx'
 import ContextAPI from './Components/ContextAPI/ContextAPI.jsx'
 import AddProduct from './Components/Add Product/AddProduct.jsx'
+import AddProduct2 from './Components/Add Product/AddProduct2.jsx'
 
 
 const routes = createBrowserRouter([
@@ -35,7 +36,7 @@ const routes = createBrowserRouter([
       },
       {
         path : "/add-product",
-        element : <AddProduct></AddProduct>
+        element : <AddProduct2></AddProduct2>
       }
     ]
   }

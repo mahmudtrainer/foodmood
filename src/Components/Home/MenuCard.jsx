@@ -85,7 +85,7 @@ const MenuCard = () => {
   return (
     <section className="my-10">
       <h1 className="text-3xl font-bold text-center">Menu Card</h1>
-      {/* <div>
+      <div>
         <input
           ref={inputRefs}
           type="number"
@@ -95,7 +95,7 @@ const MenuCard = () => {
         <button className="btn" onClick={() => handleOrder()}>
           Order
         </button>
-      </div> */}
+      </div>
       <div className="flex flex-wrap my-10">
         <div  className="lg:w-2/3 w-full">
         <div className="flex justify-center my-5">
@@ -133,7 +133,7 @@ const MenuCard = () => {
               </div>
             </div>
           ))}
-         </div>
+         </div> 
           <div className="w-fit my-5 mx-auto">
             {
              pageLength.map((e,idx)=> <button className="btn me-2" key={idx}>{e+1}</button>)
