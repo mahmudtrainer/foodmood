@@ -8,6 +8,7 @@ import MenuCard from './Components/Home/MenuCard.jsx'
 import Registration from './Components/Firebase/Auth/Registration.jsx'
 import LogIn from './Components/Firebase/Auth/LogIn.jsx'
 import ContextAPI from './Components/ContextAPI/ContextAPI.jsx'
+import AddProduct from './Components/Add Product/AddProduct.jsx'
 
 
 const routes = createBrowserRouter([
@@ -31,6 +32,10 @@ const routes = createBrowserRouter([
       {
         path : '/login',
         element : <LogIn></LogIn>
+      },
+      {
+        path : "/add-product",
+        element : <AddProduct></AddProduct>
       }
     ]
   }
