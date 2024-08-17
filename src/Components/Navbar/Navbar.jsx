@@ -50,7 +50,7 @@ const Navbar = () => {
                             <img src={user?.photoURL} className='w-12 h-12 rounded-full object-cover' alt="" />
                             <div>
                                 <p>{user?.displayName}</p>
-                                <p>{user?.email}</p>
+                                {/* <p>{user?.email}</p> */}
                             </div>
                             <button onClick={() => logOut()} className='btn bg-red-500 text-white'>LogOut</button>
                         </div>

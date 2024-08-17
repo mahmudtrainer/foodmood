@@ -36,7 +36,7 @@ const routes = createBrowserRouter([
       },
       {
         path : "/add-product",
-        element : <AddProduct2></AddProduct2>
+        element : <AddProduct></AddProduct>
       }
     ]
   }

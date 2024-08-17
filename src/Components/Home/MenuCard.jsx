@@ -1,30 +1,48 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const MenuCard = () => {
-  const foods = useLoaderData(null);
+  // const foods = useLoaderData(null);
   const [orderArray, setOrderArray] = useState([]);
-  const [array, setArray] = useState(foods);
+  const [array, setArray] = useState([]);
   // const [pageNum, setpageNum] = useState([])
-  let totalPrice = 0
+  let totalPrice = 0;
   const inputRefs = useRef([]);
-  const searchRef = useRef()
+  const searchRef = useRef();
   // console.log(foods);
 
-
+  useEffect(() => {
+    axios.get('http://localhost:3000/foods')
+    .then(res=>{
+      console.log(res);
+      if(res?.data){
+        setArray(res.data)
+      }
+      
+    })
+    .catch(err=>{
+      console.log(err);
+      
+    })
+  }, []);
 
   const handleOrder = (index) => {
     const data = inputRefs.current[index]?.value;
     const data1 = inputRefs.current.value;
     console.log(data1);
 
-    const orderList = { name: foods[index].name, price: foods[index].price, quantity: data };
+    const orderList = {
+      name: foods[index].name,
+      price: foods[index].price,
+      quantity: data,
+    };
     setOrderArray((prevOrderArray) => [...prevOrderArray, orderList]);
   };
 
   if (orderArray.length > 0) {
-    const total = orderArray?.reduce((p, c) => p + (c?.price*c?.quantity),0);
-    totalPrice = total
+    const total = orderArray?.reduce((p, c) => p + c?.price * c?.quantity, 0);
+    totalPrice = total;
     // console.log(total);
   }
 
@@ -38,54 +56,51 @@ const MenuCard = () => {
   //   const length = [...Array(pageCount).keys()]
   //   console.log(...Array(pageCount).keys());
   // }
-  const pageCount = Math.ceil(foods?.length/6)
+  const pageCount = Math.ceil(array?.length / 6);
   // for(let i = 1; i<= pageCount ; i++){
   //   const a = Array.from(i)
   //   console.log(a);
   // }
   // setpageNum(pageCount)
-  const pageLength = [...Array(pageCount).keys()]
+  const pageLength = [...Array(pageCount).keys()];
 
-
-  const handleSort =(e)=>{
+  const handleSort = (e) => {
     console.log(e.target.value);
-  
-    if(e.target.value == "lowtohigh"){
-  const sortArray = foods.sort((a,b)=> a.price - b.price)
-  setArray([...sortArray])
-    // console.log(sortArray);
 
-    }
-    if(e.target.value == "hightolow"){
-      const sortArray = foods.sort((a,b)=>b.price - a.price )
+    if (e.target.value == "lowtohigh") {
+      const sortArray = foods.sort((a, b) => a.price - b.price);
+      setArray([...sortArray]);
       // console.log(sortArray);
-      setArray([...sortArray])
     }
-    if(e.target.value == "Default"){
+    if (e.target.value == "hightolow") {
+      const sortArray = foods.sort((a, b) => b.price - a.price);
+      // console.log(sortArray);
+      setArray([...sortArray]);
+    }
+    if (e.target.value == "Default") {
       // console.log(foods);
-      setArray([...foods])
+      setArray([...foods]);
     }
+  };
 
-    
-  }
-
- const handleSearch =(e)=>{
-  e.preventDefault()
-  console.log(searchRef.current.value);
-  const search = foods.filter((e,idx)=> e.name.toLowerCase().includes(searchRef.current.value.toLowerCase()) )
-  console.log(search);
-  setArray([...search])
-  if(searchRef.current.value.length <1){
-    setArray([...foods])
-  }
-
- }
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(searchRef.current.value);
+    const search = foods.filter((e, idx) =>
+      e.name.toLowerCase().includes(searchRef.current.value.toLowerCase())
+    );
+    console.log(search);
+    setArray([...search]);
+    if (searchRef.current.value.length < 1) {
+      setArray([...foods]);
+    }
+  };
   console.log(array);
 
   return (
     <section className="my-10">
       <h1 className="text-3xl font-bold text-center">Menu Card</h1>
-      <div>
+      {/* <div>
         <input
           ref={inputRefs}
           type="number"
@@ -95,49 +110,65 @@ const MenuCard = () => {
         <button className="btn" onClick={() => handleOrder()}>
           Order
         </button>
-      </div>
+      </div> */}
       <div className="flex flex-wrap my-10">
-        <div  className="lg:w-2/3 w-full">
-        <div className="flex justify-center my-5">
-        <div id="Input Section" className="w-fit mx-auto">
-        <input ref={searchRef} type="text" className="border-2 rounded-xl border-black p-1 " />
-        <button onClick={handleSearch} className="btn btn-sm bg-red-500 text-white hover:bg-red-500">Search </button>
-        </div>
-          <div id="dropdown" className="w-fit ml-auto">
-          <select onClick={handleSort} name="" id="" className="border-2 p-1 border-black">
-            <option value="Default">Default</option>
-            <option  value="lowtohigh">Low To High</option>
-            <option value="hightolow"> High to Low</option>
-          </select>
-          {/* <butto onClick={handleSort} className="btn bg-red-500 text-white hover:bg-red-500 mr-10">Sort(low to High)</butto>
-          <butto onClick={handleSort1} className="btn bg-red-500 text-white hover:bg-red-500 mr-10">Sort(High to Low)</butto> */}
-        </div>
-        </div>
-        
-         <div className="flex  flex-wrap gap-10 justify-center">
-         {array?.map((e, idx) => (
-            <div key={idx} className="border-2 rounded-xl p-2 w-fit">
-              <img className="w-56 h-52 object-cover" src={e?.photo} alt="" />
-              <h1>{e?.name}</h1>
-              <p>{e?.price}</p>
-              <div>
-                <input
-                  ref={(el) => (inputRefs.current[idx] = el)}
-                  type="number"
-                  name="count"
-                  className="border-2 px-1 border-black w-10 rounded-lg"
-                />
-                <button className="btn" onClick={() => handleOrder(idx)}>
-                  Order
-                </button>
-              </div>
+        <div className="lg:w-2/3 w-full">
+          <div className="flex justify-center my-5">
+            <div id="Input Section" className="w-fit mx-auto">
+              <input
+                ref={searchRef}
+                type="text"
+                className="border-2 rounded-xl border-black p-1 "
+              />
+              <button
+                onClick={handleSearch}
+                className="btn btn-sm bg-red-500 text-white hover:bg-red-500"
+              >
+                Search{" "}
+              </button>
             </div>
-          ))}
-         </div> 
+            <div id="dropdown" className="w-fit ml-auto">
+              <select
+                onClick={handleSort}
+                name=""
+                id=""
+                className="border-2 p-1 border-black"
+              >
+                <option value="Default">Default</option>
+                <option value="lowtohigh">Low To High</option>
+                <option value="hightolow"> High to Low</option>
+              </select>
+              {/* <butto onClick={handleSort} className="btn bg-red-500 text-white hover:bg-red-500 mr-10">Sort(low to High)</butto>
+          <butto onClick={handleSort1} className="btn bg-red-500 text-white hover:bg-red-500 mr-10">Sort(High to Low)</butto> */}
+            </div>
+          </div>
+
+          <div className="flex  flex-wrap gap-10 justify-center">
+            {array?.map((e, idx) => (
+              <div key={idx} className="border-2 rounded-xl p-2 w-fit">
+                <img className="w-56 h-52 object-cover" src={e?.image} alt="" />
+                <h1>{e?.name}</h1>
+                <p>{e?.price}</p>
+                <div>
+                  <input
+                    ref={(el) => (inputRefs.current[idx] = el)}
+                    type="number"
+                    name="count"
+                    className="border-2 px-1 border-black w-10 rounded-lg"
+                  />
+                  <button className="btn" onClick={() => handleOrder(idx)}>
+                    Order
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
           <div className="w-fit my-5 mx-auto">
-            {
-             pageLength.map((e,idx)=> <button className="btn me-2" key={idx}>{e+1}</button>)
-            }
+            {pageLength.map((e, idx) => (
+              <button className="btn me-2" key={idx}>
+                {e + 1}
+              </button>
+            ))}
           </div>
         </div>
         <div className="lg:w-1/4 w-fit mx-auto">
@@ -177,7 +208,9 @@ const MenuCard = () => {
                 </td>
                 <td className="border-2 border-black text-center px-3"></td>
                 <td className="border-2 border-black text-center px-3"></td>
-                <td className="border-2 border-black text-center px-3">{totalPrice}</td>
+                <td className="border-2 border-black text-center px-3">
+                  {totalPrice}
+                </td>
               </tr>
             </tbody>
           </table>
