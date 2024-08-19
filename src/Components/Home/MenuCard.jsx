@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const MenuCard = () => {
   // const foods = useLoaderData(null);
   const [orderArray, setOrderArray] = useState([]);
   const [array, setArray] = useState([]);
+  const navigate = useNavigate()
   // const [pageNum, setpageNum] = useState([])
   let totalPrice = 0;
   const inputRefs = useRef([]);
@@ -159,6 +160,7 @@ const MenuCard = () => {
                   <button className="btn" onClick={() => handleOrder(idx)}>
                     Order
                   </button>
+                  <button onClick={()=> navigate(`/menu/${e?._id}`)} className="btn bg-red-500 text-white">Details</button>
                 </div>
               </div>
             ))}
