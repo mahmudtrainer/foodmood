@@ -1,47 +1,59 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios"
-import Swal from "sweetalert2"
+import { IoCloseSharp } from "react-icons/io5";
+import useAxios, { AxiosSource } from "./useAxios";
 
-const AddProduct = () => {
+const Modal = ({ setcondition, card }) => {
+  const axiosLink = useAxios(AxiosSource);
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
 
-    axios.post('http://localhost:3000/food', data)
+  // const watchfield = watch();
+
+  const onSubmit = (data) => {
+    // console.log(data);
+    const newData = {
+      name : data?.name || card?.name ,
+       price : data?.price || card?.price ,
+        image : data?.image || card?.image ,
+        details : data?.details || card?.details,
+
+    }
+
+    axiosLink.put(`/update/${card?._id}`, newData)
     .then(res=>{
-      if(res){
-        Swal.fire({
-          title: "Succesfull to add food",
-          text: "You clicked the button!",
-          icon: "success"
-        });
-      }
+      console.log(res);
       
     })
     .catch(err=>{
-      Swal.fire({
-        title: "UnSuccesfull to add food",
-        text: "You clicked the button!",
-        icon: "error"
-      });
+      console.log(err);
       
     })
 
-
-   
+    console.log(newData) 
+    // console.log(watchfield);
+    // if(data){
+    //   axiosLink.
+    // }
   };
 
   return (
     <section>
+      <div className="flex justify-end mr-5 mt-5">
+        <button
+          onClick={() => setcondition(false)}
+          className="text-3xl  font-extrabold"
+        >
+          <IoCloseSharp></IoCloseSharp>
+        </button>
+      </div>
       <h1 className="text-4xl text-center font-bold">Add Product</h1>
 
-      <div className="w-1/3 mx-auto my-10">
+      <div className="w-2/3 mx-auto my-10">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-2" action="">
           <div className="w-2/3 mx-auto">
             <label className="text-xl font-semibold" htmlFor="">
@@ -50,8 +62,10 @@ const AddProduct = () => {
             <br />
             {/* <input className='border-2 w-full border-black rounded-xl p-1'></input> */}
             <input
+              defaultValue={card?.name}
               className="border-2 w-full border-black rounded-xl p-1"
               {...register("name")}
+             
             />
           </div>
           <div className="w-2/3 mx-auto">
@@ -61,6 +75,7 @@ const AddProduct = () => {
             <br />
             {/* <input className='border-2 w-full border-black rounded-xl p-1 '></input> */}
             <input
+              defaultValue={card?.price}
               className="border-2 w-full border-black rounded-xl p-1"
               {...register("price")}
             />
@@ -72,6 +87,7 @@ const AddProduct = () => {
             <br />
             {/* <input className='border-2 w-full border-black rounded-xl p-1 '></input> */}
             <input
+              defaultValue={card?.image}
               className="border-2 w-full border-black rounded-xl p-1"
               {...register("image")}
             />
@@ -83,6 +99,7 @@ const AddProduct = () => {
             <br />
             {/* <input className='border-2 w-full border-black rounded-xl p-1 '></input> */}
             <textarea
+              defaultValue={card?.details}
               className="border-2 w-full h-20 border-black rounded-xl p-1"
               {...register("details")}
             />
@@ -92,11 +109,10 @@ const AddProduct = () => {
               Submit
             </button>
           </div>
-        
         </form>
       </div>
     </section>
   );
 };
 
-export default AddProduct;
+export default Modal;
