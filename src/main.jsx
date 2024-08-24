@@ -11,6 +11,7 @@ import ContextAPI from './Components/ContextAPI/ContextAPI.jsx'
 import AddProduct from './Components/Add Product/AddProduct.jsx'
 import AddProduct2 from './Components/Add Product/AddProduct2.jsx'
 import CardDetails from './Components/Home/CardDetails.jsx'
+import PrivateRoute from './Components/Home/PrivateRoute.jsx'
 
 
 const routes = createBrowserRouter([
@@ -37,7 +38,7 @@ const routes = createBrowserRouter([
       },
       {
         path : "/add-product",
-        element : <AddProduct></AddProduct>
+        element : <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
         path : '/menu/:id',
