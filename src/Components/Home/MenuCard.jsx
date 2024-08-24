@@ -1,25 +1,45 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
+<<<<<<< HEAD
+import useAxios, { AxiosSource } from "./useAxios";
+
+const MenuCard = () => {
+  // const foods = useLoaderData(null);
+  // const [foods, setFoods] = useState([])
+  const [orderArray, setOrderArray] = useState([]);
+  const [array, setArray] = useState([]);
+  const navigate = useNavigate()
+  const axiosLink = useAxios(AxiosSource)
+=======
 
 const MenuCard = () => {
   // const foods = useLoaderData(null);
   const [orderArray, setOrderArray] = useState([]);
   const [array, setArray] = useState([]);
   const navigate = useNavigate()
+>>>>>>> e9ea68bdf42554fb55684a07aac301a5287ab163
   // const [pageNum, setpageNum] = useState([])
   let totalPrice = 0;
   const inputRefs = useRef([]);
   const searchRef = useRef();
   // console.log(foods);
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> e9ea68bdf42554fb55684a07aac301a5287ab163
   useEffect(() => {
     axios.get('http://localhost:3000/foods')
     .then(res=>{
       console.log(res);
+<<<<<<< HEAD
+      setArray(res?.data)
+=======
       if(res?.data){
         setArray(res.data)
       }
+>>>>>>> e9ea68bdf42554fb55684a07aac301a5287ab163
       
     })
     .catch(err=>{
@@ -68,6 +88,34 @@ const MenuCard = () => {
   const handleSort = (e) => {
     console.log(e.target.value);
 
+<<<<<<< HEAD
+axiosLink.get(`/sort/${e.target.value}`)
+.then(res=>{
+  console.log(res);
+  setArray(res?.data)
+  
+})
+.catch(err=>{
+  console.log(err);
+  
+})
+    
+
+    // if (e.target.value == "lowtohigh") {
+    //   const sortArray = foods.sort((a, b) => a.price - b.price);
+    //   setArray([...sortArray]);
+    //   // console.log(sortArray);
+    // }
+    // if (e.target.value == "hightolow") {
+    //   const sortArray = foods.sort((a, b) => b.price - a.price);
+    //   // console.log(sortArray);
+    //   setArray([...sortArray]);
+    // }
+    // if (e.target.value == "Default") {
+    //   // console.log(foods);
+    //   setArray([...foods]);
+    // }
+=======
     if (e.target.value == "lowtohigh") {
       const sortArray = foods.sort((a, b) => a.price - b.price);
       setArray([...sortArray]);
@@ -82,6 +130,7 @@ const MenuCard = () => {
       // console.log(foods);
       setArray([...foods]);
     }
+>>>>>>> e9ea68bdf42554fb55684a07aac301a5287ab163
   };
 
   const handleSearch = (e) => {
@@ -160,7 +209,11 @@ const MenuCard = () => {
                   <button className="btn" onClick={() => handleOrder(idx)}>
                     Order
                   </button>
+<<<<<<< HEAD
+                  <button onClick={()=> navigate((`/menu/${e?._id}`))} className="btn bg-red-500 text-white">Details</button>
+=======
                   <button onClick={()=> navigate(`/menu/${e?._id}`)} className="btn bg-red-500 text-white">Details</button>
+>>>>>>> e9ea68bdf42554fb55684a07aac301a5287ab163
                 </div>
               </div>
             ))}

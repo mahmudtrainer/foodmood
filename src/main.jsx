@@ -41,7 +41,11 @@ const routes = createBrowserRouter([
         element : <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
+<<<<<<< HEAD
+        path : 'menu/:id',
+=======
         path : '/menu/:id',
+>>>>>>> e9ea68bdf42554fb55684a07aac301a5287ab163
         element : <CardDetails></CardDetails>
       }
     ]
